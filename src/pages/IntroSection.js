@@ -29,7 +29,7 @@ const IntroSection = () => {
   }, []);
   return (
     <section className="bg-white">
-      <div className="md:mt-20 md:px-10 py-16 text-gray-900 relative">
+      <div className="md:mt-20 md:px-10 px-3 py-16 text-gray-900 relative">
         <div className="container mx-auto flex md:flex-row flex-col items-center md:mt-10">
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 text-center">
             <img
