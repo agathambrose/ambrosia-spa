@@ -76,7 +76,7 @@ const Services = () => {
                 </h1>
                 <p className="leading-relaxed">
                   To ensure your skin stays perfect, flawless and unmatched. We
-                  mave use of sterilized tools and healthy treatments to revive
+                  make use of sterilized tools and healthy treatments to revive
                   and maintain your skin for you.
                 </p>
               </div>
@@ -96,12 +96,12 @@ const Services = () => {
                   WAXING
                 </h2>
                 <h1 className="title-font text-lg font-medium text-white mb-3">
-                  ...With absolute love and care
+                  ...With total attention
                 </h1>
                 <p className="leading-relaxed">
-                  To ensure your skin stays perfect, flawless and unmatched. We
-                  mave use of sterilized tools and healthy treatments to revive
-                  and maintain your skin for you.
+                  To provide you a service that ensures the much needed
+                  beauty tweaks while making certain that every part requiring
+                  attention, receives a ample dose of it.
                 </p>
               </div>
             </div>
@@ -120,12 +120,12 @@ const Services = () => {
                   MANIS & PEDIS
                 </h2>
                 <h1 className="title-font text-lg font-medium text-white mb-3">
-                  ...With absolute love and care
+                  ...With the right tools
                 </h1>
                 <p className="leading-relaxed">
-                  To ensure your skin stays perfect, flawless and unmatched. We
-                  mave use of sterilized tools and healthy treatments to revive
-                  and maintain your skin for you.
+                  We provide adequate care and attention to your hands and feet,
+                  ensuring to restore and/or keep them soft, moisturized and
+                  glowing healthily.
                 </p>
               </div>
             </div>

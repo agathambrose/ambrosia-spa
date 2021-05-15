@@ -1,11 +1,17 @@
-import Services from "./pages/Services"
-import IntroSection from "./pages/IntroSection"
+import Services from "./components/Services"
+import IntroSection from "./components/IntroSection"
 import Header from "./components/Header"
-import Testimonial from "./pages/Testimonial"
-import Contact from "./pages/Contact"
+import Testimonial from "./components/Testimonial"
+import Contact from "./components/Contact"
 import Footer from "./components/Footer"
+import { useEffect } from "react"
+
 
 const App = () => {
+  useEffect(() => {
+    document.title = "Ambrosia Spa";
+  }, []);
+
   return (
     <>
       <Header/>

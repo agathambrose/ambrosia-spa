@@ -1,8 +1,52 @@
-import {useForm} from "react-hook-form"
+import { useState } from "react";
+import axios from "axios";
+import swal from "sweetalert2";
 
 const Contact = () => {
-  const {handleSubmit} = useForm()
-  const onSubmit = data => console.log(data);
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    phone_number: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setState((prevProps) => ({
+      ...prevProps,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(state);
+
+    axios({
+      method: "POST",
+      url: "http://localhost:3002/send",
+      data: state,
+    }).then((response) => {
+      if (response.data.status === "success") {
+        swal({
+          Title: "Message sent!", 
+          icon: "success",
+          button: "Ok",
+        });
+        setState({
+          name: "",
+          email: "",
+          phone_number: "",
+          message: "",
+        });
+      } else if (response.data.status === "fail") {
+        swal({
+          Title: "Message not sent!", 
+          icon: "warning",
+          button: "Ok",
+        });
+      }
+    });
+  };
 
   return (
     <section
@@ -43,7 +87,7 @@ const Contact = () => {
                 href="mailto:ambrosia.spa.ng@gmail.com"
                 className="text-pink-400 leading-relaxed"
               >
-                ambrosia.spa.ng@gmail.com
+                ambrosia.spa.life@gmail.com
               </a>
               <h2 className="title-font font-semibold text-white tracking-widest text-xs mt-4">
                 PHONE
@@ -53,8 +97,9 @@ const Contact = () => {
           </div>
         </div>
         <form
-          onSubmit={handleSubmit(onSubmit)}
-          action="mailto:ambrosia.spa.ng@gmail.com"
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          action="mailto:ambrosia.spa.life@gmail.com"
           method="POST"
           className="lg:w-2/4 md:w-1/2 flex flex-col w-full md:py-8 mt-8 md:mt-0"
         >
@@ -66,20 +111,27 @@ const Contact = () => {
               Name
             </label>
             <input
+              onChange={handleChange}
               type="text"
               id="name"
               name="name"
+              value={state.name}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
           <div className="relative mb-4">
-            <label for="number" className="leading-7 text-sm text-gray-400">
+            <label
+              for="phone_number"
+              className="leading-7 text-sm text-gray-400"
+            >
               Phone Number
             </label>
             <input
+              onChange={handleChange}
               type="text"
-              id="number"
-              name="number"
+              id="phone_number"
+              name="phone_number"
+              value={state.phone_number}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
@@ -88,9 +140,11 @@ const Contact = () => {
               Email
             </label>
             <input
+              onChange={handleChange}
               type="email"
               id="email"
               name="email"
+              value={state.email}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             />
           </div>
@@ -99,8 +153,10 @@ const Contact = () => {
               Message
             </label>
             <textarea
+              onChange={handleChange}
               id="message"
               name="message"
+              value={state.message}
               className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             ></textarea>
           </div>
