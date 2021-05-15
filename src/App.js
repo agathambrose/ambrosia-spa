@@ -1,10 +1,5 @@
-import Services from "./components/Services"
-import IntroSection from "./components/IntroSection"
-import Header from "./components/Header"
-import Testimonial from "./components/Testimonial"
-import Contact from "./components/Contact"
-import Footer from "./components/Footer"
 import { useEffect } from "react"
+import AmbrosiaSpa from "./page/ambrosiaSpa"
 
 
 const App = () => {
@@ -14,12 +9,7 @@ const App = () => {
 
   return (
     <>
-      <Header/>
-      <IntroSection />
-      <Services />
-      <Testimonial />
-      <Contact />
-      <Footer/>
+      <AmbrosiaSpa/>
     </>
   )
 }
