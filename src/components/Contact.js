@@ -1,52 +1,5 @@
-import { useState } from "react";
-import axios from "axios";
-import swal from "sweetalert2";
 
 const Contact = () => {
-  const [state, setState] = useState({
-    name: "",
-    email: "",
-    phone_number: "",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    setState((prevProps) => ({
-      ...prevProps,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
-
-    axios({
-      method: "POST",
-      url: "http://localhost:3002/send",
-      data: state,
-    }).then((response) => {
-      if (response.data.status === "success") {
-        swal({
-          Title: "Message sent!", 
-          icon: "success",
-          button: "Ok",
-        });
-        setState({
-          name: "",
-          email: "",
-          phone_number: "",
-          message: "",
-        });
-      } else if (response.data.status === "fail") {
-        swal({
-          Title: "Message not sent!", 
-          icon: "warning",
-          button: "Ok",
-        });
-      }
-    });
-  };
 
   return (
     <section
@@ -57,7 +10,7 @@ const Contact = () => {
         Contact
       </h1>
       <div className="container px-5 py-24 flex sm:flex-nowrap flex-wrap justify-center items-center">
-        <div className="lg:w-2/4 md:w-1/2 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+        <div className="lg:w-2/4 bg-gray-900 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-center relative">
           <iframe
             title="map"
             className="absolute inset-0"
@@ -96,74 +49,6 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          encType="multipart/form-data"
-          action="mailto:ambrosia.spa.life@gmail.com"
-          method="POST"
-          className="lg:w-2/4 md:w-1/2 flex flex-col w-full md:py-8 mt-8 md:mt-0"
-        >
-          <h2 className="text-white text-center text-lg mb-1 font-medium title-font">
-            Feedback/Reservation Form
-          </h2>
-          <div className="relative mb-4">
-            <label for="name" className="leading-7 text-sm text-gray-400">
-              Name
-            </label>
-            <input
-              onChange={handleChange}
-              type="text"
-              id="name"
-              name="name"
-              value={state.name}
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            />
-          </div>
-          <div className="relative mb-4">
-            <label
-              for="phone_number"
-              className="leading-7 text-sm text-gray-400"
-            >
-              Phone Number
-            </label>
-            <input
-              onChange={handleChange}
-              type="text"
-              id="phone_number"
-              name="phone_number"
-              value={state.phone_number}
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            />
-          </div>
-          <div className="relative mb-4">
-            <label for="email" className="leading-7 text-sm text-gray-400">
-              Email
-            </label>
-            <input
-              onChange={handleChange}
-              type="email"
-              id="email"
-              name="email"
-              value={state.email}
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-            />
-          </div>
-          <div className="relative mb-4">
-            <label for="message" className="leading-7 text-sm text-gray-400">
-              Message
-            </label>
-            <textarea
-              onChange={handleChange}
-              id="message"
-              name="message"
-              value={state.message}
-              className="w-full bg-gray-800 rounded border border-gray-700 focus:border-pink-500 focus:ring-2 focus:ring-pink-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-            ></textarea>
-          </div>
-          <button className="text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded text-lg">
-            Send
-          </button>
-        </form>
       </div>
     </section>
   );
